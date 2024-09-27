@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Demandes</title>
+</head>
+<body>
+<h1>Liste des Demandes</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Statut</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="demande : ${demandes}">
+        <td th:text="${demande.id}"></td>
+        <td th:text="${demande.statut}"></td>
+        <td>
+            <form th:action="@{/validate}" method="post">
+                <input type="hidden" name="demandeId" th:value="${demande.id}" />
+                <button type="submit" th:if="${demande.statut == 0}">Valider</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

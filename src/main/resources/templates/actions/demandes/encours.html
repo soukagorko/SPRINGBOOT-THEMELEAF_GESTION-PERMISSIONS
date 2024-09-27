@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Demandes</title>
+</head>
+<body>
+<h1>Liste des Demandes</h1>
+<table>
+    <thead>
+        <tr class="text-dark" style="background-color: darkgray;">
+            <th style="background-color: antiquewhite;">MATRICULE</th>
+            <th style="background-color: antiquewhite;" width="25%">NOM</th>
+            <th style="background-color: antiquewhite;">SERVICE</th>
+            <th style="background-color: antiquewhite;">DUREE</th>
+            <th style="background-color: antiquewhite;" width="25%">PERIODE</th>
+            <th style="background-color: antiquewhite;" width="20%">ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="demande : ${demandes}">
+        <td th:text="${demande.id}"></td>
+
+        <td th:text="${demande.personnel.matricule}"></td>
+        <td>
+            <small class="text-muted" th:text="${demande.personnel.grade}"></small><br/>
+            <span th:text="|${demande.personnel.prenom} ${demande.personnel.nom}|"></span>
+        </td>
+        <td th:text="${demande.service.nomService}"></td>
+        <td>
+            &nbsp;
+            <small class="badge bg-warning text-center">
+                                                <span th:text="${demande.dureePermission}">
+                                                </span>
+                <span> heures</span>
+            </small>
+        </td>
+        <td>
+            <small>du</small>
+            <small class="text-muted badge bg-info" th:text="${#dates.format(demande.dateDebut, 'dd-MM-Y')}"></small>
+            <br/>
+            <small>au</small>
+            <small class="text-muted badge bg-warning" th:text="${#dates.format(demande.dateFin, 'dd-MM-Y')}"></small>
+        </td>
+
+        <td th:text="${demande.statut}"></td>
+        <td>
+            <form th:action="@{/validate}" method="post">
+                <input type="hidden" name="demandeId" th:value="${demande.id}" />
+                <button type="submit" th:if="${demande.statut == 0}">Valider</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1" class="mt-5">
+<head>
+    <meta charset="UTF-8">
+    <title>PAGE-PERSONNEL</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+</head>
+<body style="font-family: 'Times New Roman'">
+<div layout:fragment="content1">
+
+    <div class="container col-sm-12 mt-3">
+        <div class="page-header mt-3">
+            <div class="row col-sm-12">
+                <div class="form-group col-sm-10">
+                    <h3 class="card-title">
+                        <span class="badge bg-secondary">Liste Demandes </span>
+                    </h3>
+                </div>
+                <div class="form-group col-sm-2 text-end">
+                    <a th:href="@{/demandes/create}" class="text-primary ms-2">
+                        <i class="bi bi-plus"></i>
+                        Ajouter</a>
+                </div>
+            </div>
+            <!--  -->
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+
+                        <form method="get" th:action="@{/demandes}">
+                            <div class="card-body">
+                                <div class="card">
+                                    <div class="row col-sm-12 mt-3 ms-1">
+                                        <div class="form-group col-sm-8">
+                                            <input class="form-control" type="text" name="keyword" th:value="${keyword}" placeholder="rechercher par mot clé ...">
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <button type="submit"
+                                                    class="btn btn-outline-success col-sm-12">
+                                                <i class="bi bi-save ms-2"></i>
+                                                Rechercher
+                                            </button>
+                                        </div>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </form>
+                        <!--                        <hr/>-->
+                        <div class="card-body booking_card">
+                            <div class="table-responsive">
+                                <table id="example"
+                                       class="table table-striped table-bordered text-center datatable">
+                                    <thead>
+                                        <tr class="text-dark" style="background-color: darkgray;">
+                                            <th style="background-color: antiquewhite;">ID</th>
+                                            <th style="background-color: antiquewhite;">MATRICULE</th>
+                                            <th style="background-color: antiquewhite;" width="25%">NOM</th>
+                                            <th style="background-color: antiquewhite;">SERVICE</th>
+                                            <th style="background-color: antiquewhite;">DUREE</th>
+                                            <th style="background-color: antiquewhite;" width="25%">PERIODE</th>
+                                            <th style="background-color: antiquewhite;" width="20%">ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="demande : ${demandes}">
+                                        <td th:text="${demande.id}"></td>
+                                        <td th:text="${demande.personnel.matricule}"></td>
+                                        <td>
+                                            <small class="text-muted" th:text="${demande.personnel.grade}"></small><br/>
+                                            <span th:text="|${demande.personnel.prenom} ${demande.personnel.nom}|"></span>
+                                        </td>
+                                        <td th:text="${demande.service.nomService}"></td>
+                                        <td>
+                                            &nbsp;
+                                            <small class="badge bg-warning text-center">
+                                                <span th:text="${demande.dureePermission}">
+                                                </span>
+                                                <span> heures</span>
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <small>du</small>
+                                            <small class="text-muted badge bg-info" th:text="${#dates.format(demande.dateDebut, 'dd-MM-Y')}"></small>
+                                            <br/>
+                                            <small>au</small>
+                                            <small class="text-muted badge bg-warning" th:text="${#dates.format(demande.dateFin, 'dd-MM-Y')}"></small>
+                                        </td>
+<!--                                        <td th:text="${demande.statut}"></td>-->
+                                        <td th:switch="${(demande.statut)}">
+                                            <span th:case="'0'">
+                                                <p>
+                                                    <strong class="text-warning">
+                                                    Demande en attente
+                                                    </strong>
+                                                </p>
+                                                <div class="row col-sm-12 mt-1 ms-1">
+                                                    <div class="form-group col-sm-6">
+                                                       <form th:action="@{/validate}" method="post">
+                                                        <input type="hidden" name="demandeId" th:value="${demande.id}" />
+                                                        <button class="btn btn-sm btn-outline-primary" type="submit">
+                                                            Accorder
+                                                        </button>
+                                                    </form>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <form th:action="@{/rejeter}" method="post">
+                                                        <input type="hidden" name="demandeId" th:value="${demande.id}" />
+                                                        <button class="btn btn-sm btn-outline-danger" type="submit">
+                                                            Rejeter
+                                                        </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <span th:case="'1'">
+                                                        <p>
+                                                            <strong class="text-success">
+                                                            Demande deja acceptée
+                                                            </strong>
+                                                        </p>
+                                                        <form th:action="@{/rejeter}" method="post">
+                                                            <input type="hidden" name="demandeId" th:value="${demande.id}" />
+                                                            <button class="btn btn-sm btn-outline-danger" type="submit">Rejeter</button>
+                                                        </form>
+                                            </span>
+                                            <span th:case="'2'">
+                                                        <p>
+                                                            <strong class="text-warning">
+                                                            Demande deja rejetée
+                                                            </strong>
+                                                        </p>
+                                                        <form th:action="@{/validate}" method="post">
+                                                            <input type="hidden" name="demandeId" th:value="${demande.id}" />
+                                                            <button class="btn btn-sm btn-outline-primary" type="submit">Accorder</button>
+                                                        </form>
+                                            </span>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
