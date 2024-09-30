@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template" class="mt-5">
+<head>
+    <meta charset="UTF-8">
+    <title>PERMISSIONS</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+</head>
+<body style="font-family: 'Times New Roman'">
+<div layout:fragment="content1">
+
+    <div class="container col-sm-12 mt-3">
+        <div class="page-header mt-3">
+
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+
+                        <div class="card-header text-center">
+                            <strong><U><h4 class="card-title">APPLICATION DE GESTION DES PERMISSIONS</h4></U></strong>
+                            <strong class="card-title">du</strong><br/>
+                            <B><U><h6 class="card-title">COMMISSARIAT SPECIAL DE L'AIBD</h6></U></B>
+                            <strong class="card-title">CS AIBD</strong><br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--DEBUT STATS DEMANDE-->
+            <div class="card-body mt-3">
+                <div class="row card">
+                    <!-- SERVICE -->
+                    <div class="card-header">
+                        <strong class='text-cente'>
+                            Statistiques demandes de Permission
+                        </strong>
+                    </div>
+                    <!-- -->
+                    <!-- FIN STATISTIQUES 30 DERNIERS JOURS ET ANNUELLE 4 -->
+                    <div class="row col-sm-12 mt-1 ms-1 ml-1">
+                        <div class="form-group col-sm-12">
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="row text-center col-sm-12 mt-1 ms-1 ml-1">
+                                        <div class="form-group col-sm-6">
+                                            <div class="card-body text-center">
+                                                <div class="row card">
+                                                    <div class="card-header">
+                                                        <strong>
+                                                            Permissions accordées
+                                                        </strong>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <table class="table table-striped table-bordered text-center">
+                                                            <tr class="text-center">
+                                                                <th style="font-size: xx-small">Service</th>
+                                                                <th style="font-size: xx-small">des 7 derniers jrs</th>
+                                                                <th style="font-size: xx-small">des 30 derniers jrs</th>
+                                                                <th style="font-size: xx-small">Total annuel</th>
+                                                            </tr>
+                                                            <tr class="text-center" th:each="row : ${permissionAccordeesStatistiques}">
+                                                                <td style="font-size: xx-small">
+                                                                    <small th:text="${row[0]}"></small>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[1]}"></strong>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[2]}"></strong>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[3]}"></strong>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-6">
+                                            <div class="card-body text-center">
+                                                <div class="row card">
+                                                    <div class="card-header">
+                                                        <strong>
+                                                            Permissions rejetées
+                                                        </strong>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <table class="table table-striped table-bordered text-center">
+                                                            <tr class="text-center">
+                                                                <th style="font-size: xx-small">Service</th>
+                                                                <th style="font-size: xx-small">des 7 derniers jrs</th>
+                                                                <th style="font-size: xx-small">des 30 derniers jrs</th>
+                                                                <th style="font-size: xx-small">Total annuel</th>
+                                                            </tr>
+                                                            <tr class="text-center" th:each="row : ${permissionRejeteesStatistiques}">
+                                                                <td style="font-size: xx-small">
+                                                                    <small th:text="${row[0]}"></small>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[1]}"></strong>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[2]}"></strong>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[3]}"></strong>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DEMANDES REJETEES -->
+                        <!-- -->
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+
+            <!--FIN STATS-->
+            <div class="mt-1"></div>
+
+            <div class="row col-sm-12">
+                <div class="form-group col-sm-10">
+                    <h3 class="card-title">
+                        <span class="badge bg-secondary">Permissions accordées et rejetées</span>
+                    </h3>
+                </div>
+            </div>
+            <!--  -->
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+
+                        <!--                        <hr/>-->
+                        <div class="card-body booking_card">
+                            <div class="table-responsive">
+                                <table id="permissionsTable"
+                                       class="table table-striped table-bordered text-center datatable">
+                                    <thead>
+                                    <tr class="text-dark" style="background-color: darkgray;">
+                                        <th style="background-color: antiquewhite;">MATRICULE</th>
+                                        <th style="background-color: antiquewhite;">GRADE PRENOM & NOM</th>
+                                        <th style="background-color: antiquewhite;">SERVICE</th>
+                                        <th style="background-color: antiquewhite;">DUREE</th>
+                                        <th style="background-color: antiquewhite;">PERIODE</th>
+                                        <th style="background-color: antiquewhite;">ACTION</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <p th:if="${permissions.isEmpty()}" class="text-danger">Aucune données à afficher</p>
+                                    <!--                                    <tr th:each="a:${permissions}" th:if="${a.statut == 1}">-->
+                                    <tr th:each="permission:${permissions}">
+                                        <td th:text="${permission.demande.personnel.matricule}">
+                                        </td>
+                                        <td>
+                                            <small class="text-muted" th:text="${permission.demande.personnel.grade}"></small><br/>
+                                            <span th:text="|${permission.demande.personnel.prenom} ${permission.demande.personnel.nom}|"></span>
+                                        </td>
+                                        <td th:text="${permission.demande.service.sigleService}">
+                                        </td>
+                                        <td>
+                                            <!--                                            <span class="text-muted" th:text="${permission.demande.objet}"></span><br/>-->
+                                            <small class="badge bg-secondary text-center">
+                                                <span th:text="${permission.demande.dureePermission}">
+                                                </span>
+                                                <span> heures</span>
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <small class="text-muted ">du</small>
+                                            <small class="text-warning" th:text="${#dates.format(permission.demande.dateDebut, 'dd-MM-Y')}"></small>
+                                            <br/>
+                                            <small class="text-muted">au</small>
+                                            <small class="text-warning" th:text="${#dates.format(permission.demande.dateFin, 'dd-MM-Y')}"></small>
+                                        </td>
+                                        <td th:switch="${(permission.statut)}">
+                                            <span th:case="'1'">
+                                                <p>
+                                                    <strong class="text-success">
+                                                        Permission accordée
+                                                    </strong>
+                                                </p>
+                                                <div class="col-sm-12" sec:authorize=="hasRole('SPCSA')">
+                                                    <a class="btn btn-sm btn-outline-info" th:href="@{permissions/imprimerPermission(id=${permission.id})}" th:if="${userId != 1}">
+                                                        <i class="fa-solid fa-print"></i> Imprimer
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-12" sec:authorize=="hasRole('SECRETAIRE_BRIGADE')">
+                                                    <a class="btn btn-sm btn-outline-info" th:href="@{permissions/imprimerPermission(id=${permission.id})}" th:if="${userId != 1}">
+                                                        <i class="fa-solid fa-print"></i> Imprimer
+                                                    </a>
+                                                </div>
+                                                <div class="col-sm-12" sec:authorize=="hasRole('ChefDeBrigade')">
+                                                    <a class="btn btn-sm btn-outline-info" th:href="@{permissions/annulerPermission(id=${permission.id})}" th:if="${userId != 1}">
+                                                        <i class="fa-solid fa-cancel"></i> Annuler
+                                                    </a>
+                                                </div>
+                                            </span>
+                                            <span th:case="'2'">
+                                                <p>
+                                                    <strong class="text-warning">
+                                                        Permission rejetée
+                                                    </strong>
+                                                </p>
+                                                <div class="col-sm-12" sec:authorize=="hasRole('ChefDeBrigade')">
+                                                    <a class="btn btn-sm btn-outline-info" th:href="@{permissions/accorderPermission(id=${permission.id})}" th:if="${userId != 1}">
+                                                        <i class="fa-solid fa-check"></i> Valider
+                                                    </a>
+                                                </div>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#permissionsTable').DataTable();
+                                    });
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+        </div>
+    </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1" class="mt-5">
+<head>
+    <meta charset="UTF-8">
+    <title>DETAILS-ROLE</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+</head>
+<body style="font-family: 'Times New Roman'; margin-top: auto" class="mt-5">
+<div layout:fragment="content1" class="mt-5">
+    <div class="card container col-md-6 offset-3 mt-5">
+<!--        <form method="post" th:action="@{/roles/save}">-->
+            <div class="card-header">
+                <h3 class='text-center'>
+                    <i class="fas fa-sign-in-alt mr-2">
+                    </i>Details Role
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row card">
+                    <!-- SERVICE -->
+                    <div class="card-header">
+                        <small class='text-cente'>
+                            Role
+                        </small>
+                    </div>
+                    <div class="row col-sm-12 mt-4 ms-1 ml-1">
+                        <!--                    <div class="form-group col-sm-4">-->
+                        <label class="">Role <span
+                                class="text-danger">*</span></label>
+                        <input id="nomService" class="form-control" type="text" name="nomRole" th:value="${role.nomRole}">
+                        <span class="text-danger" th:errors="${role.nomRole}"></span>
+                        <!--                    </div>-->
+                    </div>
+                    <div class="row col-sm-12 mt-4 ms-1 ml-1">
+                        <label class="">Description <span
+                                class="text-danger">*</span></label>
+                        <textarea cols="3" id="descRole" class="form-control" type="text" name="descRole" th:value="${role.descRole}">
+                    </textarea>
+                        <span class="text-danger" th:errors="${role.descRole}"></span>
+                    </div>
+                    &nbsp;
+                </div>
+            </div>
+<!--        </form>-->
+    </div>
+</div>
+
+</body>
+</html>

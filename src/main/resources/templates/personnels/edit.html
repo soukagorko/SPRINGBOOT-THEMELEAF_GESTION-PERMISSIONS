@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1" class="mt-5">
+<head>
+    <meta charset="UTF-8">
+    <title>FORMULAIRE-PERSONNEL</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+</head>
+<body style="font-family: 'Times New Roman'; margin-top: auto" class="mt-5">
+<div layout:fragment="content1" class="mt-5">
+    <div class="card container col-md-8 offset-2 mt-5">
+        <form method="post" th:action="@{/personnels/save}">
+            <div class="card-header">
+                <h3 class='text-center'>
+                    <i class="fas fa-sign-in-alt mr-2">
+                    </i>Information Personnel
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row card">
+                    <!-- SERVICE -->
+                    <div class="card-header">
+                        <small class='text-cente'>
+                            Identités
+                        </small>
+                    </div>
+                    <div class="row col-sm-12 mt-3 ms-1 ml-1">
+                        <div class="form-group col-sm-6">
+                            <label class="">Grade <span
+                                    class="text-danger">*</span></label>
+                            <input id="grade" class="form-control" type="text" name="grade" th:value="${personnel.grade}">
+                            <span class="text-danger" th:errors="${personnel.grade}"></span>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="">Matricule <span
+                                    class="text-danger">*</span></label>
+                            <input id="matricule" class="form-control" type="text" name="matricule" th:value="${personnel.matricule}">
+                            <span class="text-danger" th:errors="${personnel.matricule}"></span>
+                        </div>
+                        <!--                    <div class="form-group col-sm-4">-->
+                        <!--                        <label class="">Prénom <span-->
+                        <!--                                class="text-danger">*</span></label>-->
+                        <!--                        <input id="prenom" class="form-control" type="text" name="prenom" th:value="${personnel.prenom}">-->
+                        <!--                        <span class="text-danger" th:errors="${personnel.prenom}"></span>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="form-group col-sm-4">-->
+                        <!--                        <label class="">Nom <span-->
+                        <!--                                class="text-danger">*</span></label>-->
+                        <!--                        <input id="nom" class="form-control" type="text" name="nom" th:value="${personnel.nom}">-->
+                        <!--                        <span class="text-danger" th:errors="${personnel.nom}"></span>-->
+                        <!--                    </div>-->
+                    </div>
+                    <!--                &nbsp-->
+                    <div class="row col-sm-12 mt-2 ms-1 ml-1">
+                        <div class="form-group col-sm-6">
+                            <label class="">Prénom <span
+                                    class="text-danger">*</span></label>
+                            <input id="prenom" class="form-control" type="text" name="prenom" th:value="${personnel.prenom}">
+                            <span class="text-danger" th:errors="${personnel.prenom}"></span>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="">Nom <span
+                                    class="text-danger">*</span></label>
+                            <input id="nom" class="form-control" type="text" name="nom" th:value="${personnel.nom}">
+                            <span class="text-danger" th:errors="${personnel.nom}"></span>
+                        </div>
+                    </div>
+                    &nbsp;
+
+                </div>
+            </div>
+            <!-- SERVICE ET PROFILE -->
+            <div class="card-body">
+                <div class="row card">
+                    <!-- CHEF DE SERVICE -->
+                    <div class="card-header">
+                        <small class='text-cente'>
+                            Service et Contact
+                        </small>
+                    </div>
+                    <div class="row col-sm-12 mt-3 ms-1 ml-1">
+                        <!--                        <div class="form-group col-sm-4">-->
+                        <!--                            <label class="">Grade <span-->
+                        <!--                                    class="text-danger">*</span></label>-->
+                        <!--                            <input id="grade" class="form-control" type="text" name="grade" th:value="${personnel.grade}">-->
+                        <!--                            <span class="text-danger" th:errors="${personnel.grade}"></span>-->
+                        <!--                        </div>-->
+                        <div class="form-group col-sm-4">
+                            <label class="">Service <span
+                                    class="text-danger">*</span></label>
+                            <select class="form-control" id="service" name="service">
+                                <option value="0">selectionner service</option>
+                                <option th:each="s:${listServices}" th:value="${s.id}" th:text="${s.nomService}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="">Contact <span
+                                    class="text-danger">*</span></label>
+                            <input id="contact" class="form-control" type="text" name="contact" th:value="${personnel.contact}">
+                            <span class="text-danger" th:errors="${personnel.contact}"></span>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="">Date Arrivée <span
+                                    class="text-danger">*</span></label>
+                            <input id="dateArrivee" class="form-control" type="date" name="dateArrivee" th:value="${personnel.dateArrivee}">
+                            <span class="text-danger" th:errors="${personnel.dateArrivee}"></span>
+                        </div>
+                        <div hidden="true">
+                            <label class="">Statut <span
+                                    class="text-danger">*</span></label>
+                            <input id="statut" class="form-control" type="text" name="statut" th:value="1">
+                            <span class="text-danger" th:errors="${personnel.statut}"></span>
+                        </div>
+                    </div>
+                    &nbsp
+                </div>
+            </div>
+
+            <!-- VALIDATION -->
+            <div class="card-body">
+                <div class="row card">
+                    <div class="row col-sm-12 mt-4 ms-1 ml-1">
+                        <div class="form-group col-sm-6">
+                            <button type="submit"
+                                    class="btn btn-outline-warning col-sm-12">
+                                <i class="bi bi-cancel ms-2"></i>
+                                Annuler
+                            </button>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <button type="submit"
+                                    class="btn btn-outline-success col-sm-12">
+                                <i class="bi bi-save ms-2"></i>
+                                Enregistrer
+                            </button>
+                        </div>
+                    </div>
+                    &nbsp;
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

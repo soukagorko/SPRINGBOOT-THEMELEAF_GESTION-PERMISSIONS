@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7248a54-5811-49d8-bc2c-4fbdc8fe5ef1">
+    <property name="com.jaspersoft.studio.data.sql.tables" value="Ik9SREVSUyIgLDE1LDE1LDYzODg0MjgxLTFmZmEtNGU4MC1iNWNkLTQ1YmE5NDg2ZmY5ODs="/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="200" splitType="Stretch">
+            <staticText>
+                <reportElement x="-10" y="0" width="290" height="15" uuid="5194c3f0-9814-428a-962b-1fa19b0b00a9">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[Adjudant de Police ABDOULAYE DIALLO]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="411" y="0" width="130" height="15" uuid="487b4b99-e04d-4a6a-a491-c54d4767cadb"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <text><![CDATA[Diass, le 04.11.2022]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="-10" y="15" width="290" height="15" uuid="d667cdbf-fa31-4c42-a83e-26a68ee9d3a1">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[CCAP 716341/L]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="-10" y="30" width="290" height="15" uuid="2f45b715-4808-4321-9e61-d21d62ff0672">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                    <property name="com.jaspersoft.studio.unit.x" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <text><![CDATA[en service au Commissariat spécial de l'AIBD]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="378" y="100" width="20" height="21" uuid="6e680c72-741c-4ad9-9c70-d346094f27e9"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[A]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="280" y="130" width="220" height="70" uuid="f6236b81-47b8-4473-9aef-f0d07bdb8028">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                    <property name="com.jaspersoft.studio.unit.x" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Monsieur le commissaire de Police, chargé du Commissariat spécial de l'AIBD]]></text>
+            </staticText>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="290" splitType="Stretch">
+            <staticText>
+                <reportElement x="9" y="32" width="311" height="30" uuid="3b52d00d-2c17-4594-91d3-c86bf08f007d"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font size="12"/>
+                </textElement>
+                <text><![CDATA[O B J E T : Demande dune permission d'absence]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="80" y="110" width="100" height="20" uuid="639561f2-8372-4f7b-a1c2-7d9ec9bd152b"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <text><![CDATA[Monsieur,]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="130" width="541" height="60" uuid="a85d37d0-b5d0-4c2d-8fbc-ec128db5157a">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                    <property name="com.jaspersoft.studio.unit.x" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Justified" verticalAlignment="Middle">
+                    <font size="12"/>
+                </textElement>
+                <text><![CDATA[		Je viens par la présente, solliciter auprès de votre haute bienveillance, une permission d'absence de quarante-huit heures (48) heures, valable du 07 au 08.11.2022 inclus, pour me rendre à Dakar.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="190" width="150" height="20" uuid="06be5869-d08c-474f-a939-c680bc6c74a3"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Motif: Cas familial]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="210" width="541" height="30" uuid="44dd7e7f-06e1-42bf-8e64-d24642220bab">
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                    <property name="com.jaspersoft.studio.unit.x" value="px"/>
+                </reportElement>
+                <textElement textAlignment="Justified" verticalAlignment="Middle">
+                    <font size="12"/>
+                </textElement>
+                <text><![CDATA[Veuillez aggréer, Monsieur le Commissaire Spécial, l'expression de ma haute considération.]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <columnFooter>
+        <band height="110" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch"/>
+    </pageFooter>
+</jasperReport>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template" class="mt-5">
+<head>
+    <meta charset="UTF-8">
+    <title>PERMISSIONS-ACCORDEES</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+</head>
+<body style="font-family: 'Times New Roman'">
+<div layout:fragment="content1">
+
+    <div class="container col-sm-12 mt-3">
+        <div class="page-header mt-3">
+
+            <!--DEBUT STATS DEMANDE-->
+            <div class="card-body">
+                <div class="row card">
+                    <!-- SERVICE -->
+                    <div class="card-header">
+                        <strong class='text-cente'>
+                            Statistiques demande
+                        </strong>
+                    </div>
+
+                    <div class="row col-sm-12 mt-1 ms-1 ml-1">
+                        <div class="form-group col-sm-3">
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong>
+                                            Demande de la semaine
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped table-bordered text-center">
+                                            <tr>
+                                                <th>Service</th><th>Nbre</th>
+                                            </tr>
+                                            <tr th:each="count : ${countDemandeForWeek}" style="font-size: xx-small">
+                                                <td th:text="${count[0]}"></td>
+                                                <td class="badge bg-secondary text-warning" th:text="${count[1]}"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong class='text-cente'>
+                                            Demande du mois
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped table-bordered text-center">
+                                            <tr>
+                                                <th>Service</th><th>Nbre</th>
+                                            </tr>
+                                            <tr th:each="count : ${countDemandeForMonth}" style="font-size: xx-small">
+                                                <td th:text="${count[0]}"></td>
+                                                <td class="badge bg-secondary text-warning" th:text="${count[1]}"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong class='text-cente'>
+                                            Demandes annuelle
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <!--                                        <span class="badge bg-success" th:text="${nbreDemandeAcceptees}"></span>-->
+                                        <table class="table table-striped table-bordered text-center">
+                                            <tr>
+                                                <th>Service</th><th>Nbre</th>
+                                            </tr>
+                                            <tr th:each="count : ${countDemandeForYear}" style="font-size: xx-small">
+                                                <td th:text="${count[0]}"></td>
+                                                <td class="badge bg-secondary text-warning" th:text="${count[1]}"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong class='text-cente'>
+                                            Totale demandes
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped table-bordered text-center">
+                                            <tr>
+                                                <th>Service</th><th>Nbre</th>
+                                            </tr>
+                                            <tr th:each="count : ${countDemandeOverall}" style="font-size: xx-small">
+                                                <td th:text="${count[0]}"></td>
+                                                <td class="badge bg-secondary text-warning" th:text="${count[1]}"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-1"></div>
+
+                </div>
+            </div>
+            <!--FIN STATS DEMANDE-->
+
+            <!--DEBUT STATS-->
+            <div class="card-body">
+                <div class="row card">
+                    <!-- SERVICE -->
+                    <div class="card-header">
+                        <strong class='text-cente'>
+                            Statistiques Permission
+                        </strong>
+                    </div>
+                    <div class="row col-sm-12 mt-1 ms-1 ml-1">
+                        <div class="form-group col-sm-3">
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong>
+                                            Permission de la semaine
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped table-bordered text-center">
+                                            <tr>
+                                                <th>Service</th><th>Nbre</th>
+                                            </tr>
+                                            <tr th:each="count : ${countForWeek}" style="font-size: xx-small">
+                                                <td th:text="${count[0]}"></td>
+                                                <td class="badge bg-secondary text-warning" th:text="${count[1]}"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+<!--                            <div class="card-body text-center" style="background: #dfc2c4">-->
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong class='text-cente'>
+                                            Permission du mois
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped table-bordered text-center">
+                                            <tr>
+                                                <th>Service</th><th>Nbre</th>
+                                            </tr>
+                                            <tr th:each="count : ${countForMonth}" style="font-size: xx-small">
+                                                <td th:text="${count[0]}"></td>
+                                                <td class="badge bg-secondary text-warning" th:text="${count[1]}"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+<!--                            <div class="card-body text-center" style="background: #badbcc">-->
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong class='text-cente'>
+                                            Permissions annuelle
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+<!--                                        <span class="badge bg-success" th:text="${nbreDemandeAcceptees}"></span>-->
+                                        <table class="table table-striped table-bordered text-center">
+                                            <tr>
+                                                <th>Service</th><th>Nbre</th>
+                                            </tr>
+                                            <tr th:each="count : ${countForYear}" style="font-size: xx-small">
+                                                <td th:text="${count[0]}"></td>
+                                                <td class="badge bg-secondary text-warning" th:text="${count[1]}"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong class='text-cente'>
+                                            Totale Permissions
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+<!--                                        <span class="badge bg-danger" th:text="${nbreDemandeRejetees}"></span>-->
+                                        <table class="table table-striped table-bordered text-center">
+                                            <tr>
+                                                <th>Service</th><th>Nbre</th>
+                                            </tr>
+                                            <tr th:each="count : ${countOverall}" style="font-size: xx-small">
+                                                <td th:text="${count[0]}"></td>
+                                                <td class="badge bg-secondary text-warning" th:text="${count[1]}"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-1"></div>
+                    <!--                    &nbsp;-->
+                </div>
+            </div>
+            <!--FIN STATS-->
+
+            <div class="row col-sm-12 mt-2">
+                <div class="form-group col-sm-10">
+                    <h3 class="card-title">
+                        <span class="badge bg-secondary">Permissions accordées </span>
+                    </h3>
+                </div>
+            </div>
+            <!--  -->
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+                        <div class="card-body booking_card">
+                            <div class="table-responsive">
+                                <table id="permissionAccordeeTable"
+                                       class="table table-striped table-bordered text-center datatable">
+                                    <thead>
+                                    <tr class="text-dark" style="background-color: darkgray;">
+                                        <!--                                        <th style="background-color: antiquewhite;">UTILISATEUR</th>-->
+                                        <th style="background-color: antiquewhite;">MATRICULE</th>
+                                        <th style="background-color: antiquewhite;">GRADE PRENOM & NOM</th>
+                                        <th style="background-color: antiquewhite;">SERVICE</th>
+                                        <th style="background-color: antiquewhite;">DUREE</th>
+                                        <th style="background-color: antiquewhite;">PERIODE</th>
+                                        <th style="background-color: antiquewhite;">ACTION</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <p th:if="${permissions.isEmpty()}" class="text-danger">Aucune données à afficher</p>
+                                        <tr th:each="p:${permissions}">
+                                            <td>
+                                                <strong class="text-muted" th:text="${p.demande.personnel.matricule}"></strong>
+                                            </td>
+                                            <td>
+                                                <small class="text-muted" th:text="${p.demande.personnel.grade}"></small><br/>
+                                                <span th:text="|${p.demande.personnel.prenom} ${p.demande.personnel.nom}|"></span>
+                                            </td>
+                                            <td  th:text="${p.demande.personnel.service.nomService}"></td>
+                                            <td>
+                                            <small class="badge bg-secondary text-center">
+                                                <span th:text="${p.demande.dureePermission}">
+                                                </span>
+                                                <span> heures</span>
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <small class="text-muted ">du</small>
+                                            <small class="text-warning" th:text="${#dates.format(p.demande.dateDebut, 'dd-MM-Y')}"></small>
+                                            <br/>
+                                            <small class="text-muted">au</small>
+                                            <small class="text-warning" th:text="${#dates.format(p.demande.dateFin, 'dd-MM-Y')}"></small>
+                                        </td>
+                                        <td>
+                                            <strong class="badge bg-secondary text-info">
+                                                Permission accordée
+                                            </strong><br/>
+                                            <form th:action="@{/imprimerPermission}" method="post">
+                                                <input type="hidden" name="demandeId" th:value="${p.demande.id}" />
+                                                <button class="btn btn-sm btn-outline-primary col-sm-12" type="submit" th:if="${userId != 1}">
+                                                    <i class="fa-solid fa-print"></i> Imprimer
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#permissionAccordeeTable').DataTable();
+                                    });
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

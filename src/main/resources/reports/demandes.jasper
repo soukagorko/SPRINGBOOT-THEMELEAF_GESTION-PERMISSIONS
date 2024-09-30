@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="Demandes"
+              pageWidth="595"
+              pageHeight="842"
+              columnWidth="535"
+              leftMargin="30"
+              rightMargin="30"
+              topMargin="20"
+              bottomMargin="20"
+              uuid="123e4567-e89b-12d3-a456-426614174000">
+
+    <!-- Déclaration des champs (fields) -->
+    <field name="id" class="java.lang.Long"/>
+    <field name="user" class="java.lang.String"/>
+    <field name="personnel" class="java.lang.String"/>
+    <field name="service" class="java.lang.String"/>
+    <field name="destinataireDemande" class="java.lang.String"/>
+    <field name="lieu" class="java.lang.String"/>
+    <field name="dateDebut" class="java.util.Date"/>
+    <field name="dureePermission" class="java.lang.Integer"/>
+    <field name="dateFin" class="java.util.Date"/>
+    <field name="objet" class="java.lang.String"/>
+    <field name="motif" class="java.lang.String"/>
+    <field name="destination" class="java.lang.String"/>
+    <field name="createdAt" class="java.time.LocalDateTime"/>
+
+    <!-- Paramètres (si vous en avez besoin) -->
+    <parameter name="ReportTitle" class="java.lang.String"/>
+
+    <!-- Début du rapport -->
+    <title>
+        <band height="50">
+            <staticText>
+                <reportElement x="0" y="0" width="515" height="30" uuid="static-text-title"/>
+                <textElement textAlignment="Center">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Demande de Permission]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <!-- En-tête de la page -->
+    <pageHeader>
+        <band height="30">
+            <staticText>
+                <reportElement x="0" y="0" width="515" height="20" uuid="page-header-text"/>
+                <textElement textAlignment="Left">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Détails de la Demande]]></text>
+            </staticText>
+        </band>
+    </pageHeader>
+
+    <!-- Contenu principal (données de la demande) -->
+    <detail>
+        <band height="200">
+            <!-- ID -->
+            <textField>
+                <reportElement x="0" y="0" width="150" height="20" uuid="field-id"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["ID: " + $F{id}]]></textFieldExpression>
+            </textField>
+
+            <!-- Utilisateur -->
+            <textField>
+                <reportElement x="0" y="20" width="515" height="20" uuid="field-user"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Utilisateur: " + $F{user}]]></textFieldExpression>
+            </textField>
+
+            <!-- Personnel -->
+            <textField>
+                <reportElement x="0" y="40" width="515" height="20" uuid="field-personnel"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Personnel: " + $F{personnel}]]></textFieldExpression>
+            </textField>
+
+            <!-- Service -->
+            <textField>
+                <reportElement x="0" y="60" width="515" height="20" uuid="field-service"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Service: " + $F{service}]]></textFieldExpression>
+            </textField>
+
+            <!-- Destinataire de la Demande -->
+            <textField>
+                <reportElement x="0" y="80" width="515" height="20" uuid="field-destinataire"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Destinataire: " + $F{destinataireDemande}]]></textFieldExpression>
+            </textField>
+
+            <!-- Lieu -->
+            <textField>
+                <reportElement x="0" y="100" width="515" height="20" uuid="field-lieu"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Lieu: " + $F{lieu}]]></textFieldExpression>
+            </textField>
+
+            <!-- Date de Début -->
+            <textField>
+                <reportElement x="0" y="120" width="515" height="20" uuid="field-dateDebut"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Date de Début: " + $F{dateDebut}]]></textFieldExpression>
+            </textField>
+
+            <!-- Durée de la Permission -->
+            <textField>
+                <reportElement x="0" y="140" width="515" height="20" uuid="field-dureePermission"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Durée: " + $F{dureePermission} + " jours"]]></textFieldExpression>
+            </textField>
+
+            <!-- Date de Fin -->
+            <textField>
+                <reportElement x="0" y="160" width="515" height="20" uuid="field-dateFin"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Date de Fin: " + $F{dateFin}]]></textFieldExpression>
+            </textField>
+
+            <!-- Objet -->
+            <textField>
+                <reportElement x="0" y="180" width="515" height="20" uuid="field-objet"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Objet: " + $F{objet}]]></textFieldExpression>
+            </textField>
+
+            <!-- Motif -->
+            <textField>
+                <reportElement x="0" y="200" width="515" height="20" uuid="field-motif"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Motif: " + $F{motif}]]></textFieldExpression>
+            </textField>
+
+            <!-- Destination -->
+            <textField>
+                <reportElement x="0" y="220" width="515" height="20" uuid="field-destination"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Destination: " + $F{destination}]]></textFieldExpression>
+            </textField>
+
+            <!-- Créé le -->
+            <textField>
+                <reportElement x="0" y="240" width="515" height="20" uuid="field-createdAt"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Créé le: " + $F{createdAt}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <!-- Pied de page -->
+    <pageFooter>
+        <band height="20">
+            <staticText>
+                <reportElement x="0" y="0" width="515" height="20" uuid="footer-text"/>
+                <textElement textAlignment="Center">
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Rapport généré par JasperReports]]></text>
+            </staticText>
+        </band>
+    </pageFooter>
+</jasperReport>

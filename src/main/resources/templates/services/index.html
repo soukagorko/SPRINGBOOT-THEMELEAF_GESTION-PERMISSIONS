@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1" class="mt-5">
+<head>
+    <meta charset="UTF-8">
+    <title>PAGE-SERVICES</title>
+    <!--<link rel="stylesheet" href="/static/bootstrap-5/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+</head>
+<body style="font-family: 'Times New Roman'">
+<!--<body style="font-family: 'Tahoma'">-->
+<!--<body style="font-family: 'Tempus Sans ITC'">-->
+<div layout:fragment="content1">
+
+    <div class="container col-sm-12 mt-3">
+        <div class="page-header mt-3">
+            <div class="row col-sm-12">
+                <div class="form-group col-sm-10">
+                    <h3 class="card-title">
+                        <span class="badge bg-secondary">Liste Services </span>
+                    </h3>
+                </div>
+                <div class="form-group col-sm-2 text-end">
+                    <a th:href="@{/services/create}" class="text-primary ms-2">
+                        <i class="bi bi-plus"></i>
+                        Ajouter</a>
+                </div>
+            </div>
+            <!--  -->
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+                        <div class="card-body booking_card">
+                            <div class="table-responsive">
+                                <table id="example"
+                                       class="table table-striped table-bordered text-center datatable">
+                                    <thead>
+                                    <tr class="text-dark" style="background-color: darkgray;">
+                                        <th style="background-color: antiquewhite;">SERVICE</th>
+                                        <th style="background-color: antiquewhite;">CHEF DE SERVICE</th>
+                                        <th style="background-color: antiquewhite;">CONTACT SERVICE</th>
+                                        <th style="background-color: antiquewhite;">ACTION</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="s:${listServices}">
+<!--                                        <td th:text="${s.id}"></td>-->
+                                        <td th:text="${s.nomService}"></td>
+                                        <td th:text="${s.nomChefService}"></td>
+                                        <td th:text="${s.contactService}"></td>
+                                        <td class="text-center">
+                                            &nbsp;
+<!--                                            <a class="btn btn-outline-success" th:href="@{/service-edit(id=${s.id})}">-->
+<!--                                                Editer-->
+<!--                                            </a>-->
+                                            <a class="btn btn-sm btn-outline-warning" th:href="@{services/detail(id=${s.id})}">
+<!--                                                <i class="bi bi-eye ms-1"></i>-->
+                                                <small class="text-muted">Détail</small>
+                                            </a>
+                                            <!-- <a class="btn btn-sm btn-outline-success ms-1" routerLink="/naissances/edit/{{data.id}}">
+                                                <i class="bi bi-pencil ms-1">
+                                                </i>
+                                            </a> -->
+                                            <a class="btn btn-sm btn-outline-success ms-1" th:href="@{services/edit(id=${s.id})}">
+<!--                                                <i class="bi bi-pencil ms-1"></i> -->
+                                                <small class="text-muted ms-1">Editer</small>
+                                            </a>
+
+<!--                                            <form action method="post"-->
+<!--                                                  class="d-inline  ms-1">-->
+<!--                                                <button type="submit"-->
+<!--                                                        class="btn btn-sm btn-outline-danger"-->
+<!--                                                        (click)="onDelete(data.id)"-->
+<!--                                                        href="#"-->
+<!--                                                        onclick="return confirm('ÊTES-VOUS SUR DE VOULOIR SUPPRIMER CET ACTE DE NAISSANCE ?')">-->
+<!--                                                    <i class="bi bi-trash"> </i>-->
+<!--                                                </button>-->
+<!--                                            </form>-->
+                                        </td>
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

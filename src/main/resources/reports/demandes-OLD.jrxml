@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="demandes_report" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50" uuid="1d9a9654-a82c-4e16-bd8f-2d3a204b9338">
+
+    <parameter name="matricule" class="java.lang.String"/>
+    <parameter name="prenom" class="java.lang.String"/>
+    <parameter name="nom" class="java.lang.String"/>
+    <parameter name="contact" class="java.lang.String"/>
+    <parameter name="duree_permission" class="java.lang.Integer"/>
+    <parameter name="date_debut" class="java.lang.String"/>
+    <parameter name="date_fin" class="java.lang.String"/>
+
+    <title>
+        <band height="50">
+            <textField>
+                <reportElement x="200" y="0" width="200" height="30"/>
+                <textElement textAlignment="Center">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Détails de la Demande"]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <detail>
+        <band height="200">
+<!--            <staticText>-->
+<!--                <reportElement x="0" y="0" width="100" height="20"/>-->
+<!--                <text><![CDATA[Matricule:]]></text>-->
+<!--            </staticText>-->
+<!--            <textField>-->
+<!--                <reportElement x="110" y="0" width="200" height="20"/>-->
+<!--                <textFieldExpression><![CDATA[$P{matricule}]]></textFieldExpression>-->
+<!--            </textField>-->
+
+<!--            <staticText>-->
+<!--                <reportElement x="0" y="30" width="100" height="20"/>-->
+<!--                <text><![CDATA[Prénom:]]></text>-->
+<!--            </staticText>-->
+<!--            <textField>-->
+<!--                <reportElement x="110" y="30" width="200" height="20"/>-->
+<!--                <textFieldExpression><![CDATA[$P{prenom}]]></textFieldExpression>-->
+<!--            </textField>-->
+
+<!--            <staticText>-->
+<!--                <reportElement x="0" y="60" width="100" height="20"/>-->
+<!--                <text><![CDATA[Nom:]]></text>-->
+<!--            </staticText>-->
+<!--            <textField>-->
+<!--                <reportElement x="110" y="60" width="200" height="20"/>-->
+<!--                <textFieldExpression><![CDATA[$P{nom}]]></textFieldExpression>-->
+<!--            </textField>-->
+
+<!--            <staticText>-->
+<!--                <reportElement x="0" y="90" width="100" height="20"/>-->
+<!--                <text><![CDATA[Contact:]]></text>-->
+<!--            </staticText>-->
+<!--            <textField>-->
+<!--                <reportElement x="110" y="90" width="200" height="20"/>-->
+<!--                <textFieldExpression><![CDATA[$P{contact}]]></textFieldExpression>-->
+<!--            </textField>-->
+
+            <staticText>
+                <reportElement x="0" y="120" width="100" height="20"/>
+                <text><![CDATA[Durée Permission:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="110" y="120" width="200" height="20"/>
+                <textFieldExpression><![CDATA[$P{duree_permission}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="150" width="100" height="20"/>
+                <text><![CDATA[Date Début:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="110" y="150" width="200" height="20"/>
+                <textFieldExpression><![CDATA[$P{date_debut}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="180" width="100" height="20"/>
+                <text><![CDATA[Date Fin:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="110" y="180" width="200" height="20"/>
+                <textFieldExpression><![CDATA[$P{date_fin}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>

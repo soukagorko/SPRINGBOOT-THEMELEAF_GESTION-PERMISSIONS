@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demandeDePermission" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d69261fc-a3fb-455e-ba4e-8fe85a8b1d7c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bd_gestion_permission_springboot_angular"/>
+<!--	<queryString language="SQL">-->
+<!--		<![CDATA[SELECT *-->
+<!--FROM bd_gestion_permission_springboot_angular3.demandes]]>-->
+<!--	</queryString>-->
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM bd_springboot_thymeleaf_gestion-permission.demandes]]>
+	</queryString>
+	<field name="date_debut" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date_debut"/>
+		<property name="com.jaspersoft.studio.field.label" value="date_debut"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="date_fin" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date_fin"/>
+		<property name="com.jaspersoft.studio.field.label" value="date_fin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="destinataire_permission" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="destinataire_permission"/>
+		<property name="com.jaspersoft.studio.field.label" value="destinataire_permission"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="destination" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="destination"/>
+		<property name="com.jaspersoft.studio.field.label" value="destination"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="duree_permission" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="duree_permission"/>
+		<property name="com.jaspersoft.studio.field.label" value="duree_permission"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="grade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="grade"/>
+		<property name="com.jaspersoft.studio.field.label" value="grade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="lieu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lieu"/>
+		<property name="com.jaspersoft.studio.field.label" value="lieu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="matricule" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="matricule"/>
+		<property name="com.jaspersoft.studio.field.label" value="matricule"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="motif" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="motif"/>
+		<property name="com.jaspersoft.studio.field.label" value="motif"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="nom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="objet" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="objet"/>
+		<property name="com.jaspersoft.studio.field.label" value="objet"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="prenom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenom"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="service" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="service"/>
+		<property name="com.jaspersoft.studio.field.label" value="service"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="created_at" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+<!--	<group name="date_debut">-->
+<!--		<groupExpression><![CDATA[$F{date_debut}]]></groupExpression>-->
+<!--	</group>-->
+<!--	<group name="date_fin">-->
+<!--		<groupExpression><![CDATA[$F{date_fin}]]></groupExpression>-->
+<!--	</group>-->
+	<group name="destinataire_permission">
+		<groupExpression><![CDATA[$F{destinataire_permission}]]></groupExpression>
+	</group>
+	<group name="destination">
+		<groupExpression><![CDATA[$F{destination}]]></groupExpression>
+	</group>
+	<group name="duree_permission">
+		<groupExpression><![CDATA[$F{duree_permission}]]></groupExpression>
+	</group>
+<!--	<group name="grade">-->
+<!--		<groupExpression><![CDATA[$F{grade}]]></groupExpression>-->
+<!--	</group>-->
+	<group name="lieu">
+		<groupExpression><![CDATA[$F{lieu}]]></groupExpression>
+	</group>
+<!--	<group name="matricule">-->
+<!--		<groupExpression><![CDATA[$F{matricule}]]></groupExpression>-->
+<!--	</group>-->
+	<group name="motif">
+		<groupExpression><![CDATA[$F{motif}]]></groupExpression>
+	</group>
+<!--	<group name="nom">-->
+<!--		<groupExpression><![CDATA[$F{personnel_id}]]></groupExpression>-->
+<!--	</group>-->
+	<group name="objet">
+		<groupExpression><![CDATA[$F{objet}]]></groupExpression>
+	</group>
+<!--	<group name="prenom">-->
+<!--		<groupExpression><![CDATA[$F{personnel_id}]]></groupExpression>-->
+<!--	</group>-->
+<!--	<group name="service">-->
+<!--		<groupExpression><![CDATA[$F{service_id}]]></groupExpression>-->
+<!--	</group>-->
+	<group name="created_at">
+		<groupExpression><![CDATA[$F{created_at}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="70" width="330" height="15" uuid="fd54d00e-18f8-4224-aeba-bbe2ad9874fe">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+<!--				<textFieldExpression><![CDATA[CONCATENATE($F{grade}, " ",$F{prenom}, " ",$F{nom})]]></textFieldExpression>-->
+			</textField>
+			<textField>
+				<reportElement x="330" y="0" width="180" height="60" uuid="7910c31e-b329-4417-b10f-7a34a90162cc">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[CONCATENATE($F{lieu},",",  " le ", new SimpleDateFormat("dd/MM/yyyy").format($F{created_at}))]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="40" y="35" width="290" height="15" uuid="fce96bc2-c226-4d81-80f2-52fb1adf32ab">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+<!--				<textFieldExpression><![CDATA[CONCATENATE("Service : ",$F{service_id}, ", ")]]></textFieldExpression>-->
+			</textField>
+			<textField>
+				<reportElement x="40" y="10" width="290" height="15" uuid="7c7211cd-8f6d-4262-bffa-ff84a98f7d7d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+<!--				<textFieldExpression><![CDATA[CONCATENATE("CCAP: ",$F{matricule}, ", ")]]></textFieldExpression>-->
+<!--				<textFieldExpression><![CDATA[CONCATENATE("CCAP: ",$F{matricule_id}, ", ")]]></textFieldExpression>-->
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="290" splitType="Stretch">
+			<staticText>
+				<reportElement x="280" y="70" width="30" height="21" uuid="e6f1e288-2641-4c77-9f72-6bfa8d40574b"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="130" width="80" height="30" uuid="b7907061-e53b-4ebf-887e-05df2ce035d6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[O B J E T : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="125" y="135" width="290" height="25" uuid="4d9bf67d-0741-4423-b197-e8c240e58843">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{objet}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="90" width="295" height="30" uuid="4b3edc54-79b3-49ee-9c4c-11f2709a0d16"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{destinataire_permission}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="170" width="295" height="20" uuid="d9e2f2d5-d28d-40d7-a2a4-5861493ebccf"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{destinataire_permission}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="195" width="470" height="95" uuid="454fcb7a-e41f-4c93-b262-7684b26c433c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[CONCATENATE("                Je viens par la présente, solliciter auprès de votre haute bienveillance, une permission d'absence de: ", " ", " jours, valable du ",new SimpleDateFormat("dd/MM/yyyy").format($F{date_debut})," au ",new SimpleDateFormat("dd/MM/yyyy").format($F{date_fin})," inclus, pour me rendre à ",$F{destination},".")]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="200" splitType="Stretch">
+			<staticText>
+				<reportElement x="380" y="60" width="100" height="30" uuid="e564dc84-df2a-4711-b760-f843a7e6ec4d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[L'intéressé]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="41" y="0" width="473" height="50" uuid="8fe60712-73fe-4ac7-b445-73467fcdb28d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[CONCATENATE("                Veuillez aggréer, Monsieur le Commissaire Spécial, l'expression de ma haute considération",".")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

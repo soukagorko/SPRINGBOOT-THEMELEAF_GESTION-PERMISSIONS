@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.2.2/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top container" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">GESTION-PERMISSION-CSA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/accueil}">ACCUEIL</a>
+                </li>
+                <li class="nav-item dropdown" sec:authorize=="hasRole('ADMIN')">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ROLES
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/roles}">Lister</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/roles/create}">Ajouter</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" sec:authorize=="hasRole('ADMIN')">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        USERS
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/users}">Lister</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/register}">Ajouter</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        PERSONNELS
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/personnels}">Lister 1</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/listPersonnels}">Lister 2</a></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/personnels/all}">Personnel et Services</a></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/personnels/parService}">Personnel Par Service</a></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/personnels/du_service}">Personnel de mon Service</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/personnels/create}">Ajouter</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        DEMANDES
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li sec:authorize!="hasRole('ADMIN')">
+                            <a class="dropdown-item" th:href="@{/personnels}">Ajouter</a>
+                        </li>
+                        <!-- TOUTES LES DEMANDES -->
+                        <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                        <li sec:authorize!="hasRole('SECRETAIRE-BRIGADE')">
+                            <a class="dropdown-item" th:href="@{/demandes}">Toutes les demandes</a>
+                        </li>
+                        <li sec:authorize=="hasRole('ADMIN')">
+                            <a class="dropdown-item" th:href="@{/demandes/all}">All</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" th:href="@{/demandes/par_service}">All Demandes par service</a>
+                        </li>
+                        <!-- TOUTES LES DEMANDES EN ATTENTE-->
+                        <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/demandes/en-attentes/all}">All Demandes en attente</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <!-- TOUTES LES DEMANDES EN ATTENTE EN FONCTION DU SERVICE -->
+                        <li><a class="dropdown-item" th:href="@{/demandes/en_attentes/du_personnel}">Demandes du Personnel attente 1</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <!-- RESULTATS DEMANDES -->
+                        <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/demandes/resultats}">Résultats des demandes</a></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                        <!-- DEMANDES REJETEES -->
+                        <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/demandes/rejetees/all}">Rejetées</a></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                        <!-- DEMANDES REJETEES DU PERSONNEL -->
+                        <li><a class="dropdown-item" th:href="@{/demandes/rejetees/du_personnel}">Demande du Personnel Rejetées</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/demandes/resultats/du_personnel}">Résultats demandes du Personnel</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" th:href="@{/demandes/du_service}">Demandes du Service</a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        PERMISSIONS
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" th:href="@{/demandes/en_attentes}">Ajouter</a></li>
+                        <li><hr class="dropdown-divider"></li>
+<!--                        <li><a class="dropdown-item" th:href="@{/permissions}">Accordées et Rejetées</a></li>-->
+<!--                        <li><hr class="dropdown-divider"></li>-->
+                        <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/permissions}">Accordées et Rejetées</a></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/permissions/du_personnel}">du Personnel</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/permissions/accordees}">Accordées</a></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/permissions/rejetees}">Rejetées</a></li>
+                        <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/permissions/du_service/accordees}">Permissions du personnel accordées</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/permissions/du_service/rejettes}">Demandes du Service en attente</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" th:href="@{/permissions/statistiques}">Statistiques</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                    </ul>
+                </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    STATISTIQUES
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" th:href="@{/demandes/statistiques}">ALL Stat demandes</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/demandes/statistiques/du_personnel}">Stat demandes du personnel</a></li>
+                    <li><hr class="dropdown-divider"></li>
+
+                    <li><a class="dropdown-item" th:href="@{/statistiques/permissions/total_jour_par_service}">Par Service</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/statistiques/permissions/total_jour_du_personnel}">Du Personnel</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/permissions/statistiques/stats}">Stat 1</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/permissions/statistiques/statistiques}">Statistiques</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/permissions/statistiques/statistiques-OK}">Statistiques-OK</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/permissions/statistiques/du_personnel}">Stat du personnel</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/permissions/statistiques/service}">Stat Service</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" th:href="@{/permissions/statistiques/duservice}">Stat du Service</a></li>
+                    <li><hr class="dropdown-divider"></li>
+<!--                    <li><a class="dropdown-item" th:href="@{/permissions/stat2}">Stat2</a></li>-->
+<!--                    <li><hr class="dropdown-divider"></li>-->
+<!--                    <li><a class="dropdown-item" th:href="@{/permissions/stat3}">Stat3</a></li>-->
+<!--                    <li><hr class="dropdown-divider"></li>-->
+                    <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/permissions/cumul_heure_permission_1}">cumul_heure_permission_1</a></li>
+                    <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                    <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/permissions/cumul_heure_permission_2}">cumul_heure_permission_3</a></li>
+                    <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                    <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/permissions/cumul_heure_permission_2}">cumul_heure_permission_4</a></li>
+                    <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                    <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/permissions/cumul_heure_permission/par_service}">Par Service</a></li>
+                    <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                    <li sec:authorize=="hasRole('ADMIN')"><a class="dropdown-item" th:href="@{/permissions/cumul_heure_permission/du_personnel}">Du Personnel</a></li>
+                    <li sec:authorize=="hasRole('ADMIN')"><hr class="dropdown-divider"></li>
+                </ul>
+            </li>
+
+
+            <ul class="navbar-nav ms-1000">
+                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                    <a class="nav-link dropdown-toggle" href="#" id="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span th:text="'User: ' + ${#authentication.principal.username}"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <span th:text="'User: ' + ${#authentication.principal.username}"></span>
+                        </li>
+                        <li>
+                            <span th:text="'Role: ' + ${#authentication.authorities[0].authority}"></span>
+                        </li>
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                                <button type="submit">Se deconnecter</button>
+                            </form>
+                        </li>
+                    </ul>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<section layout:fragment="content1">
+
+</section>
+
+</body>
+</html>
+

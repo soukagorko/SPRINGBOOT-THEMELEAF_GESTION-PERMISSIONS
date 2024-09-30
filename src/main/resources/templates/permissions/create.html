@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Action Form</title>
+</head>
+<body>
+<form th:action="@{/savePermission}" th:object="${permission}" method="post">
+    <div>
+        <label for="user">Utilisateur:</label>
+        <select id="user" th:field="*{user}">
+            <option th:each="user : ${users}" th:value="${user}" th:text="${user.name}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="demande">Demande:</label>
+        <select id="demande" th:field="*{demande}">
+            <option th:each="demande : ${demandes}" th:value="${demande}" th:text="${demande.description}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="service">Service:</label>
+        <select id="service" th:field="*{service}">
+            <option th:each="service : ${services}" th:value="${service}" th:text="${service.name}"></option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Valider</button>
+    </div>
+</form>
+</body>
+</html>

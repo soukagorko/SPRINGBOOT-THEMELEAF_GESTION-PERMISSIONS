@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Demandes</title>
+</head>
+<body>
+<h1>Total demandes avec statut 1 : <span th:text="${demandesCount}"></span></h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Service</th>
+        <th>Nombre de demandes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${demandesParService}">
+        <td th:text="${entry.key.nomService}"></td>
+        <td th:text="${entry.value}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

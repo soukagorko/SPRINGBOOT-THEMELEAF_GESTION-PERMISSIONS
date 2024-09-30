@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template" class="mt-5">
+<head>
+    <meta charset="UTF-8">
+    <title>EDIT-UTILISATEUR</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+</head>
+<body style="font-family: 'Times New Roman'; margin-top: auto" class="mt-5">
+<div layout:fragment="content1" class="mt-5">
+    <div class="card container col-md-8 offset-2 mt-5">
+        <form method="post" th:action="@{/users/save}">
+            <div class="card-header">
+                <h3 class='text-center'>
+                    <i class="fas fa-sign-in-alt mr-2">
+                    </i>Donnees Utilisateur
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row card">
+                    <!-- SERVICE -->
+                    <div class="card-header">
+                        <small class='text-cente'>
+                            Identités
+                        </small>
+                    </div>
+                    <div class="row col-sm-12 mt-4 ms-1 ml-1">
+                        <div hidden="true">
+                            <input id="id" class="form-control" type="text" name="id" th:value="${user.id}">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="">Prénom <span
+                                    class="text-danger">*</span></label>
+                            <input id="prenom" class="form-control" type="text" name="prenom" th:value="${user.prenom}">
+                            <span class="text-danger" th:errors="${user.prenom}"></span>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="">Nom <span
+                                    class="text-danger">*</span></label>
+                            <input id="nom" class="form-control" type="text" name="nom" th:value="${user.nom}">
+                            <span class="text-danger" th:errors="${user.nom}"></span>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="">Contact <span
+                                    class="text-danger">*</span></label>
+                            <input id="contact" class="form-control" type="text" name="contact" th:value="${user.contact}">
+                            <span class="text-danger" th:errors="${user.contact}"></span>
+                        </div>
+                    </div>
+                    &nbsp
+                </div>
+            </div>
+            <!-- SERVICE ET PROFILE -->
+            <div class="card-body">
+                <div class="row card">
+                    <!-- CHEF DE SERVICE -->
+                    <div class="card-header">
+                        <small class='text-cente'>
+                            Service et Profile
+                        </small>
+                    </div>
+                    <div class="row col-sm-12 mt-4 ms-1 ml-1">
+                        <div class="form-group col-sm-6">
+                            <label class="">Service <span
+                                    class="text-danger">*</span></label>
+                            <select class="form-control" id="service" name="service">
+                                <option value="0">selectionner service</option>
+                                <option th:each="s:${listServices}" th:value="${s.id}" th:text="${s.nomService}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="">Role <span
+                                    class="text-danger">*</span></label>
+                            <select class="form-control" id="role" name="role">
+                                <option value="0">selectionner role</option>
+                                <option th:each="r:${listRoles}" th:value="${r.id}" th:text="${r.nomRole}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    &nbsp
+                </div>
+            </div>
+            <!--USERNAME PASSWORD -->
+            <div class="card-body">
+                <div class="row card">
+                    <!-- CHEF DE SERVICE -->
+                    <div class="card-header">
+                        <small class='text-cente'>
+                            Username et Password
+                        </small>
+                    </div>
+                    <div class="row col-sm-12 mt-4 ms-1 ml-1">
+                        <div class="form-group col-sm-6">
+                            <label class="">Nom utilisateur <span
+                                    class="text-danger">*</span></label>
+                            <input id="username" class="form-control" type="text" name="username" th:value="${user.username}">
+                            <span class="text-danger" th:errors="${user.username}"></span>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="">Mot de Passe <span
+                                    class="text-danger">*</span></label>
+                            <input id="password" class="form-control" type="text" name="password" th:value="${user.password}">
+                            <span class="text-danger" th:errors="${user.password}"></span>
+                        </div>
+                    </div>
+                    &nbsp
+                </div>
+            </div>
+
+            <!-- VALIDATION -->
+            <div class="card-body">
+                <div class="row card">
+                    <div class="row col-sm-12 mt-4 ms-1 ml-1">
+                        <div class="form-group col-sm-6">
+                            <button type="submit"
+                                    class="btn btn-outline-warning col-sm-12">
+                                <i class="bi bi-cancel ms-2"></i>
+                                Annuler
+                            </button>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <button type="submit"
+                                    class="btn btn-outline-success col-sm-12">
+                                <i class="bi bi-save ms-2"></i>
+                                Modifier
+                            </button>
+                        </div>
+                    </div>
+                    &nbsp;
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

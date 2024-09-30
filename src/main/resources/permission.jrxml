@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demandeDePermission" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d69261fc-a3fb-455e-ba4e-8fe85a8b1d7c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bd_gestion_permission_springboot_angular"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM bd_gestion_permission_springboot_angular4.demandes]]>
+	</queryString>
+	<field name="date_debut" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date_debut"/>
+		<property name="com.jaspersoft.studio.field.label" value="date_debut"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="date_fin" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date_fin"/>
+		<property name="com.jaspersoft.studio.field.label" value="date_fin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="destinataire_permission" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="destinataire_permission"/>
+		<property name="com.jaspersoft.studio.field.label" value="destinataire_permission"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="destination" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="destination"/>
+		<property name="com.jaspersoft.studio.field.label" value="destination"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="duree_permission" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="duree_permission"/>
+		<property name="com.jaspersoft.studio.field.label" value="duree_permission"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="grade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="grade"/>
+		<property name="com.jaspersoft.studio.field.label" value="grade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="lieu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lieu"/>
+		<property name="com.jaspersoft.studio.field.label" value="lieu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="matricule" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="matricule"/>
+		<property name="com.jaspersoft.studio.field.label" value="matricule"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="motif" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="motif"/>
+		<property name="com.jaspersoft.studio.field.label" value="motif"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="nom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="objet" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="objet"/>
+		<property name="com.jaspersoft.studio.field.label" value="objet"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="prenom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenom"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<field name="service" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="service"/>
+		<property name="com.jaspersoft.studio.field.label" value="service"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="demandes"/>
+	</field>
+	<group name="date_debut">
+		<groupExpression><![CDATA[$F{date_debut}]]></groupExpression>
+	</group>
+	<group name="date_fin">
+		<groupExpression><![CDATA[$F{date_fin}]]></groupExpression>
+	</group>
+	<group name="destinataire_permission">
+		<groupExpression><![CDATA[$F{destinataire_permission}]]></groupExpression>
+	</group>
+	<group name="destination">
+		<groupExpression><![CDATA[$F{destination}]]></groupExpression>
+	</group>
+	<group name="duree_permission">
+		<groupExpression><![CDATA[$F{duree_permission}]]></groupExpression>
+	</group>
+	<group name="grade">
+		<groupExpression><![CDATA[$F{grade}]]></groupExpression>
+	</group>
+	<group name="lieu">
+		<groupExpression><![CDATA[$F{lieu}]]></groupExpression>
+	</group>
+	<group name="matricule">
+		<groupExpression><![CDATA[$F{matricule}]]></groupExpression>
+	</group>
+	<group name="motif">
+		<groupExpression><![CDATA[$F{motif}]]></groupExpression>
+	</group>
+	<group name="nom">
+		<groupExpression><![CDATA[$F{nom}]]></groupExpression>
+	</group>
+	<group name="objet">
+		<groupExpression><![CDATA[$F{objet}]]></groupExpression>
+	</group>
+	<group name="prenom">
+		<groupExpression><![CDATA[$F{prenom}]]></groupExpression>
+	</group>
+	<group name="service">
+		<groupExpression><![CDATA[$F{service}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="160" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="4" width="160" height="146" uuid="6fd51599-f004-4e3b-aeba-d3318fef2a90"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Republique du Senegal
+----------------
+Un Peuple - Un But - Une Foi
+----------------
+MINISTERE DE L’INTERIEUR
+----------------
+DIRECTION GENERALE DE LA POLICE NATIONALE
+----------------
+DIRECTION DE LA POLICE DE L’AIR ET DES FRONTIERES
+----------------
+COMMISSARIAT SPECIAL DE L’AIBD
+----------------
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="375" y="10" width="135" height="20" uuid="1c05a3b2-012f-4006-b4bf-f5a5ac913273"/>
+				<textFieldExpression><![CDATA[$F{date_debut}.toLocalDate()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="411" splitType="Stretch">
+			<staticText>
+				<reportElement x="110" y="20" width="370" height="50" uuid="e6f1e288-2641-4c77-9f72-6bfa8d40574b"/>
+				<textElement textAlignment="Left">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AUTORISATION D'ABSENCE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="90" width="470" height="130" uuid="cfaa760d-1c88-4889-b24c-31f00b03c1e2"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[CONCATENATE("                Il est accordé  à ", " ",$F{prenom}, " ",$F{nom}, " ", "(" ,$F{grade}, ")",  " en service " ,$F{service}, ", ", " une autorisation d'absence de  ", "    ",  "heures  à ", " valable du ",new SimpleDateFormat("dd/MM/yyyy").format($F{date_debut})," au ",new SimpleDateFormat("dd/MM/yyyy").format($F{date_fin})," exclue, pour se rendre à ",$F{destination},".")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="220" width="340" height="36" uuid="65aafdcc-9d84-40f8-ba33-2125abcc583e"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[CONCATENATE("Motif: ",$F{motif})]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="240" y="291" width="220" height="120" uuid="42917b36-f5ee-4c60-bea8-d194efad97f4"/>
+				<imageExpression><![CDATA["C:/Users/Public/WORKSPACE/JAVA/SPRING-BOOT/03_SPRING-BOOT_ANGULAR/02_POLICE/GESTION-PERMISSIONS/gestion-permission_backend-dev2/src/main/resources/static/images/P1.PNG"]]></imageExpression>
+			</image>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="230" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="190" width="470" height="40" uuid="9c120874-e335-4d44-9fa2-b5226a465d9b"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Commissariat Spécial de l’Aéroport International Blaise Diagne,
+Adresse : Diass,
+Téléphone :77
+Fax : 
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

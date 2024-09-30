@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Permissions</title>
+</head>
+<body>
+<h1 th:text="${nomService}"></h1>
+
+<h2>Permissions Accordées</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>7 derniers jours</th>
+        <th>30 derniers jours</th>
+        <th>Total Annuel</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${accordees7Jours}"></td>
+        <td th:text="${accordees30Jours}"></td>
+        <td th:text="${accordeesTotalAnnuel}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Permissions Rejetées</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>7 derniers jours</th>
+        <th>30 derniers jours</th>
+        <th>Total Annuel</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${rejetees7Jours}"></td>
+        <td th:text="${rejetees30Jours}"></td>
+        <td th:text="${rejeteesTotalAnnuel}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Toutes les Permissions</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Personnel</th>
+        <th>Date de Permission</th>
+        <th>Statut</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="permission : ${permissions}">
+        <td th:text="${permission.demande.personnel.nom} + ' ' + ${permission.demande.personnel.prenom}"></td>
+        <td th:text="${#dates.format(permission.datePermission, 'dd/MM/yyyy HH:mm')}"></td>
+        <td th:text="${permission.statut == 1 ? 'Accordée' : (permission.statut == 2 ? 'Rejetée' : 'En attente')}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

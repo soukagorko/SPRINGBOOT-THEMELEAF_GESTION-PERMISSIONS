@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template" class="mt-5">
+<head>
+    <meta charset="UTF-8">
+    <title>TOUTES LES DEMANDES</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+</head>
+<body style="font-family: 'Times New Roman'">
+<div layout:fragment="content1">
+
+    <div class="container col-sm-12 mt-3">
+        <div class="page-header mt-3">
+
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+
+                        <div class="card-header text-center">
+                            <strong><U><h4 class="card-title">APPLICATION DE GESTION DES PERMISSIONS</h4></U></strong>
+                            <strong class="card-title">du</strong><br/>
+                            <B><U><h6 class="card-title">COMMISSARIAT SPECIAL DE L'AIBD</h6></U></B>
+                            <strong class="card-title">CS AIBD</strong><br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--DEBUT STATS DEMANDE-->
+            <div class="card-body mt-3">
+                <div class="row card">
+
+                    <div class="card-header">
+                        <strong class='text-cente'>
+                            Statistiques demandes de Permission
+                        </strong>
+                    </div>
+                    <!-- -->
+                    <!-- FIN STATISTIQUES 30 DERNIERS JOURS ET ANNUELLE 4 -->
+                    <div class="row col-sm-12 mt-1 ms-1 ml-1">
+                        <div class="form-group col-sm-12">
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="row text-center col-sm-12 mt-1 ms-1 ml-1">
+                                        <div class="form-group col-sm-4">
+                                            <div class="card-body text-center">
+                                                <div class="row card">
+                                                    <div class="card-header">
+                                                        <strong>
+                                                            Demandes en attente
+                                                        </strong>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <table class="table table-striped table-bordered text-center">
+                                                            <tr class="text-center">
+                                                                <th style="font-size: xx-small">Service</th>
+                                                                <th style="font-size: xx-small">des 7 derniers jrs</th>
+                                                                <th style="font-size: xx-small">des 30 derniers jrs</th>
+                                                                <th style="font-size: xx-small">Total annuel</th>
+                                                            </tr>
+                                                            <tr class="text-center" th:each="row : ${demandesEnAttenteStatistiques}">
+                                                                <td style="font-size: xx-small">
+                                                                    <small th:text="${row[0]}"></small>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[1]}"></strong>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[2]}"></strong>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[3]}"></strong>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-4">
+                                            <div class="card-body text-center">
+                                                <div class="row card">
+                                                    <div class="card-header">
+                                                        <strong>
+                                                            Demandes acceptées
+                                                        </strong>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <table class="table table-striped table-bordered text-center">
+                                                            <tr class="text-center">
+                                                                <th style="font-size: xx-small">Service</th>
+                                                                <th style="font-size: xx-small">des 7 derniers jrs</th>
+                                                                <th style="font-size: xx-small">des 30 derniers jrs</th>
+                                                                <th style="font-size: xx-small">Total annuel</th>
+                                                            </tr>
+                                                            <tr class="text-center" th:each="row : ${demandesAccepteesStatistiques}">
+                                                                <td style="font-size: xx-small">
+                                                                    <small th:text="${row[0]}"></small>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[1]}"></strong>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[2]}"></strong>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[3]}"></strong>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-4">
+                                            <div class="card-body text-center">
+                                                <div class="row card">
+                                                    <div class="card-header">
+                                                        <strong>
+                                                            Demandes rejetées
+                                                        </strong>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <table class="table table-striped table-bordered text-center">
+                                                            <tr class="text-center">
+                                                                <th style="font-size: xx-small">Service</th>
+                                                                <th style="font-size: xx-small">des 7 derniers jrs</th>
+                                                                <th style="font-size: xx-small">des 30 derniers jrs</th>
+                                                                <th style="font-size: xx-small">Total annuel</th>
+                                                            </tr>
+                                                            <tr class="text-center" th:each="row : ${demandesRejeteesStatistiques}">
+                                                                <td style="font-size: xx-small">
+                                                                    <small th:text="${row[0]}"></small>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[1]}"></strong>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[2]}"></strong>
+                                                                </td>
+                                                                <td style="font-size: xx-small">
+                                                                    <strong th:text="${row[3]}"></strong>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <div class="mt-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- DEMANDES REJETEES -->
+                    <!-- -->
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container col-sm-12 mt-3">
+        <div class="page-header mt-3">
+
+            <div class="row col-sm-12 mt-2">
+                <div class="form-group col-sm-10">
+                    <h3 class="card-title">
+                        <span class="badge bg-secondary">Toutes les demandes </span>
+                    </h3>
+                </div>
+                <div class="form-group col-sm-2 text-end">
+                    <a th:href="@{/personnels/index}" class="text-primary ms-2">
+                        <i class="fa-solid fa-plus"></i> Ajouter
+                    </a>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+                        <div class="card-body booking_card">
+                            <div class="table-responsive">
+                                <table id="dataDemandes"
+                                       class="table table-striped table-bordered text-center datatable">
+                                    <thead>
+                                    <tr class="text-dark" style="background-color: darkgray;">
+                                        <th style="background-color: antiquewhite;" width="20%">MATRICULE</th>
+                                        <th style="background-color: antiquewhite;" width="25%">PRENOM & NOM</th>
+                                        <th style="background-color: antiquewhite;" width="10%">SERVICE</th>
+                                        <th style="background-color: antiquewhite;" width="10%">DUREE</th>
+                                        <th style="background-color: antiquewhite;" width="15%">PERIODE</th>
+                                        <th style="background-color: antiquewhite;" width="20%">ACTION</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="demande : ${demandes}" th:if="${demande.statut != 1}">
+                                        <td th:text="${demande.personnel.matricule}"></td>
+                                        <td>
+                                            <small class="text-muted" th:text="${demande.personnel.grade}"></small><br/>
+                                            <span th:text="|${demande.personnel.prenom} ${demande.personnel.nom}|"></span>
+                                        </td>
+                                        <td th:text="${demande.service.sigleService}"></td>
+                                        <td>
+                                            <small class="badge bg-secondary text-center">
+                                                <span th:text="${demande.dureePermission}">
+                                                </span>
+                                                <span> heures</span>
+                                            </small>
+                                            &nbsp
+                                        </td>
+                                        <td>
+                                            <small>du</small>
+                                            <small class="text-muted badge bg-info" th:text="${#dates.format(demande.dateDebut, 'dd-MM-Y')}"></small>
+                                            <br/>
+                                            <small>au</small>
+                                            <small class="text-muted badge bg-warning" th:text="${#dates.format(demande.dateFin, 'dd-MM-Y')}"></small>
+                                        </td>
+                                        <td th:switch="${(demande.statut)}">
+                                            <span th:case="'0'">
+                                                <p>
+                                                    <strong class="text-warning">
+                                                    Demande en attente
+                                                    </strong>
+                                                </p>
+                                                <a class="btn btn-sm btn-outline-info" th:href="@{demandes/imprimer(id=${demande.id})}" th:if="${userId != 1}">
+                                                    <i class="fa-solid fa-print"></i> Imprimer
+                                                </a>
+<!--                                                <a th:href="@{/demandes/print/{id}(id=${demande.id})}" target="_blank">-->
+<!--                    <button type="button">Imprimer</button>-->
+<!--                </a>-->
+                                            </span>
+                                            <span th:case="'1'">
+                                                        <p>
+                                                            <strong class="text-success">
+                                                            Permission deja acceptée
+                                                            </strong>
+                                                        </p>
+
+                                            </span>
+                                            <span th:case="'2'">
+                                                        <p>
+                                                            <strong class="text-danger">
+                                                            Demande deja rejetée
+                                                            </strong>
+                                                        </p>
+                                            </span>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#dataDemandes').DataTable();
+                                    });
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+        </div>
+    </div>
+</div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Permissions</title>
+</head>
+<body>
+<h1 th:text="${nomService}"></h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Personnel</th>
+        <th>Date de Permission</th>
+        <th>Statut</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="permission : ${permissions}">
+        <td th:text="${permission.demande.personnel.nom} + ' ' + ${permission.demande.personnel.prenom}"></td>
+        <td th:text="${#dates.format(permission.datePermission, 'dd/MM/yyyy HH:mm')}"></td>
+        <td th:text="${permission.statut == 1 ? 'Accordée' : (permission.statut == 2 ? 'Rejetée' : 'En attente')}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

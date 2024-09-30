@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Demandes</title>
+</head>
+<body>
+<h1>Demandes</h1>
+
+<p>Total des demandes avec statut 0: <span th:text="${count}"></span></p>
+
+<div th:each="entry : ${groupedDemandes}">
+    <h2>Service: <span th:text="${entry.key.nomService}"></span></h2>
+    <div th:each="subEntry : ${entry.value}">
+        <h3>Personnel: <span th:text="${subEntry.key.prenom + ' ' + subEntry.key.nom}"></span></h3>
+        <ul>
+            <li th:each="demande : ${subEntry.value}">
+                Demande ID: <span th:text="${demande.id}"></span>,
+<!--                Date: <span th:text="${demande.dateDemande}"></span>-->
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

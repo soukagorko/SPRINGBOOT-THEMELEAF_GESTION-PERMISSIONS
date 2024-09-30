@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template" class="mt-5">
+<head>
+    <meta charset="UTF-8">
+    <title>TOUTES LES DEMANDES</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+</head>
+<body style="font-family: 'Times New Roman'">
+<div layout:fragment="content1">
+
+    <div class="container col-sm-12 mt-3">
+        <div class="page-header mt-3">
+        <!--DEBUT STATS-->
+            <div class="card-body">
+                <div class="row card">
+                    <!-- SERVICE -->
+                    <div class="card-header">
+                        <strong class='text-cente'>
+                            Statistiques
+                        </strong>
+                    </div>
+
+                    <div class="row col-sm-12 mt-1 ms-1 ml-1">
+                        <div class="form-group col-sm-3">
+<!--                            <div class="card-body text-center" style="background: lightyellow">-->
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong>
+                                            Totale demande
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <span class="badge bg-secondary" th:text="${countForWeek}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+<!--                            <div class="card-body text-center" style="background: darksalmon">-->
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong class='text-cente'>
+                                            Demande en attente
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <span class="badge bg-warning" th:text="${nbreDemandeEnAttentes}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+<!--                            <div class="card-body text-center" style="background: lightgreen">-->
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong class='text-cente'>
+                                            Demande acceptees
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <span class="badge bg-success" th:text="${nbreDemandeAcceptees}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-3">
+<!--                            <div class="card-body text-center" style="background: darkred">-->
+                            <div class="card-body text-center">
+                                <div class="row card">
+                                    <div class="card-header">
+                                        <strong class='text-cente'>
+                                            Demande rejetees
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <span class="badge bg-danger" th:text="${nbreDemandeRejetees}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-1"></div>
+<!--                    &nbsp;-->
+                </div>
+            </div>
+            <!--FIN STATS-->
+
+            <div class="row col-sm-12 mt-2">
+                <div class="form-group col-sm-10">
+                    <h3 class="card-title">
+                        <span class="badge bg-secondary">Toutes les demandes </span>
+                    </h3>
+                </div>
+                <div class="form-group col-sm-2 text-end">
+                    <a th:href="@{/personnels/index}" class="text-primary ms-2">
+                        <i class="fa-solid fa-plus"></i> Ajouter
+                    </a>
+                </div>
+            </div>
+            <!--  -->
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+
+                        <div class="card-header text-center">
+                            <U><h6 class="card-title">COMMISSARIAT SPECIAL DE L'AIBD</h6></U>
+                            <strong class="card-title">CS AIBD</strong><br/>
+                            <I><strong class="card-title">Totale demande</strong></I><br/>
+                            <span class="badge bg-warning" th:text="${demandes.size()}"></span>
+                        </div>
+
+                        <div class="card-body booking_card">
+                            <div class="table-responsive">
+                                <table id="dataDemandes"
+                                       class="table table-striped table-bordered text-center datatable">
+                                    <thead>
+                                    <tr class="text-dark" style="background-color: darkgray;">
+<!--                                        <th style="background-color: antiquewhite;">ID</th>-->
+                                        <th style="background-color: antiquewhite;" width="20%">MATRICULE</th>
+                                        <th style="background-color: antiquewhite;" width="25%">PRENOM & NOM</th>
+                                        <th style="background-color: antiquewhite;" width="10%">SERVICE</th>
+                                        <th style="background-color: antiquewhite;" width="10%">DUREE</th>
+                                        <th style="background-color: antiquewhite;" width="15%">PERIODE</th>
+                                        <th style="background-color: antiquewhite;" width="20%">ACTION</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="demande : ${demandes}">
+                                        <td th:text="${demande.personnel.matricule}"></td>
+                                        <td>
+                                            <small class="text-muted" th:text="${demande.personnel.grade}"></small><br/>
+                                            <span th:text="|${demande.personnel.prenom} ${demande.personnel.nom}|"></span>
+                                        </td>
+                                        <td th:text="${demande.service.sigleService}"></td>
+                                        <td>
+                                            <small class="badge bg-secondary text-center">
+                                                <span th:text="${demande.dureePermission}">
+                                                </span>
+                                                <span> heures</span>
+                                            </small>
+                                            &nbsp
+                                        </td>
+                                        <td>
+                                            <small>du</small>
+                                            <small class="text-muted badge bg-info" th:text="${#dates.format(demande.dateDebut, 'dd-MM-Y')}"></small>
+                                            <br/>
+                                            <small>au</small>
+                                            <small class="text-muted badge bg-warning" th:text="${#dates.format(demande.dateFin, 'dd-MM-Y')}"></small>
+                                        </td>
+                                        <td th:switch="${(demande.statut)}">
+                                            <span th:case="'0'">
+                                                <p>
+                                                    <small class="text-warning">
+                                                    Demande en attente
+                                                    </small>
+                                                </p>
+                                                <div class="row col-sm-12">
+                                                    <div class="form-group col-sm-6">
+                                                        <a class="btn btn-sm btn-outline-info" th:href="@{demandes/imprimer(id=${demande.id})}" th:if="${userId != 1}">
+                                                            <i class="fa-solid fa-print"></i> <small class="text-muted">IMP</small>
+                                                        </a>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <a class="btn btn-sm btn-outline-danger" th:href="@{demandes/delete(id=${demande.id})}" th:if="${userId != 1}">
+                                                            <i class="fa-solid fa-trash"></i> <small class="text-muted">DEL</small>
+                                                        </a>
+                                                    </div>
+
+<!--                                                    <div class="form-group col-sm-6">-->
+<!--                                                        <a onclick="return confirm('ETES-VOUS SUR DE VOULOIR SUPPRIMER CE PERSONNEL ?')" th:href="@{/demandes/delete(id=${demande.id})}">-->
+<!--                                                            <i class="fa-solid fa-trash"></i> <small class="text-muted">DEL</small>-->
+<!--                                                        </a>-->
+<!--                                                    </di>-->
+                                                    </div>
+<!--                                                </div>-->
+
+<!--                                                    <div class="form-group col-sm-12" th:if="${demande.service.id == serviceId}">-->
+<!--                                                        <a onclick="return confirm('ETES-VOUS SUR DE VOULOIR SUPPRIMER CE PERSONNEL ?')" class="text-danger ms-1" th:href="@{/personnels/delete(id=${p.id}, keyword=${keyword}, page=${currentPage})}">-->
+<!--                                                            <i class="fa-solid fa-trash ms-1"> Supprimer</i>-->
+<!--                                                        </a>-->
+<!--                                                    </div>-->
+<!--                                                <div class="row col-sm-12 mt-1 ms-1" th:if="${userId == 1}">-->
+<!--                                                    <div class="form-group col-sm-6">-->
+<!--                                                       <form th:action="@{/savePermission}" method="post">-->
+<!--                                                            <input type="hidden" name="demandeId" th:value="${demande.id}" />-->
+<!--                                                            <input type="hidden" name="serviceId" th:value="${demande.service.id}" />-->
+<!--                                                            <button class="btn btn-sm btn-outline-primary" type="submit">-->
+<!--                                                                Accorder-->
+<!--                                                            </button>-->
+<!--                                                        </form>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="form-group col-sm-6">-->
+<!--                                                        <form th:action="@{/rejeterDemande}" method="post">-->
+<!--                                                        <input type="hidden" name="demandeId" th:value="${demande.id}" />-->
+<!--                                                        <button class="btn btn-sm btn-outline-danger" type="submit">-->
+<!--                                                            Rejeter-->
+<!--                                                        </button>-->
+<!--                                                        </form>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+                                            </span>
+                                            <span th:case="'1'">
+                                                        <small>
+                                                            <strong class="text-success">
+                                                            Permission acceptée
+                                                            </strong>
+                                                        </small>
+<!--                                                        <form th:action="@{/rejeterDemande}" method="post">-->
+<!--                                                            <input type="hidden" name="demandeId" th:value="${demande.id}" />-->
+<!--                                                            <button class="btn btn-sm btn-outline-primary" type="submit" th:if="${userId != 1}">Imprimer</button>-->
+<!--                                                        </form>-->
+                                            </span>
+                                            <span th:case="'2'">
+                                                        <p>
+                                                            <small class="text-danger">
+                                                            Demande rejetée
+                                                            </small>
+                                                        </p>
+<!--                                                            <form th:action="@{/accorderPermission}" method="post">-->
+<!--                                                                <input type="hidden" name="demandeId" th:value="${demande.id}" />-->
+<!--                                                                <input type="hidden" name="serviceId" th:value="${demande.service.id}" />-->
+<!--                                                                <button class="btn btn-sm btn-outline-primary" type="submit">-->
+<!--                                                                    Accorder-->
+<!--                                                                </button>-->
+<!--                                                            </form>-->
+                                            </span>
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#dataDemandes').DataTable();
+                                    });
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

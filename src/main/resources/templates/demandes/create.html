@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template" class="mt-5">
+<head>
+    <meta charset="UTF-8">
+    <title>FORMULAIRE-DEMANDE</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body style="font-family: 'Times New Roman'; margin-top: auto" class="mt-5">
+<div layout:fragment="content1" class="mt-5">
+
+    <!--  DEMANDEUR  -->
+    <div class="card container col-md-10 offset-1 mt-5">
+        <div class="card-header">
+            <h3 class='text-center'>
+                <i class="fas fa-sign-in-alt mr-2">
+                </i>Donnees Utilisateur
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="row card text-center">
+                <!-- SERVICE -->
+                <div class="card-header">
+                    <small class='text-cente'>
+                        Identités demandeur
+                    </small>
+                </div>
+                <div class="row col-sm-12 ms-1 ml-1">
+                        <small class="text-muted">Matricule </small>
+                        <strong>
+                            <p th:text="${personnel.matricule}"></p>
+                        </strong>
+                </div>
+
+                <div class="row col-sm-12 ms-1 ml-1">
+                    <small class="text-muted">Grade </small>
+                    <strong>
+                        <p th:text="${personnel.grade}"></p>
+                    </strong>
+                </div>
+
+                <div class="row col-sm-12 ms-1 ml-1">
+                    <small class="text-muted">Prenom </small>
+                    <strong>
+                        <p th:text="${personnel.prenom}"></p>
+                    </strong>
+                </div>
+
+                <div class="row col-sm-12 ms-1 ml-1">
+                    <small class="text-muted">Nom </small>
+                    <strong>
+                        <p th:text="${personnel.nom}" class="text-capitalize"></p>
+                    </strong>
+                </div>
+
+                <div class="row col-sm-12 ms-1 ml-1">
+                    <small class="text-muted">Service </small>
+                    <strong>
+                        <p th:text="${personnel.service.nomService}" class=""></p>
+                    </strong>
+                </div>
+                &nbsp
+            </div>
+        </div>
+    </div>
+    <!--  ################### ################################################ -->
+
+    <div class="card container col-md-10 offset-1 mt-5">
+        <form method="post" th:action="@{/demandes/save}">
+            <div class="card-header">
+                <h3 class='text-center'>
+                    <i class="fas fa-sign-in-alt mr-2">
+                    </i>Formulaire demande de permission
+                </h3>
+            </div>
+
+            <!-- SERVICE ET PROFILE -->
+
+            <div class="card-body">
+                <div class="row card">
+                    <div class="card-header">
+                        <small class='text-cente'>
+                            Infos. demande
+                        </small>
+                    </div>
+                    <div class="row col-sm-12 mt-4 ms-1 ml-1">
+
+                        <div class="form-group col-sm-4" hidden="hidden">
+                            <label class="">Personnel ID<span
+                                    class="text-danger">*</span></label>
+                            <input id="personnel" class="form-control" type="text"
+                                   name="personnel" th:value="${personnel.id}" readonly="true">
+                        </div>
+                        <div class="form-group col-sm-4" hidden="hidden">
+                            <label class="">Service ID<span
+                                    class="text-danger">*</span></label>
+                            <input id="service" class="form-control" type="text"
+                                   name="service" th:value="${personnel.service.id}" readonly="true">
+                        </div>
+
+                        <div class="form-group col-sm-4" hidden="hidden">
+                            <label class="">Destinataire<span
+                                    class="text-danger">*</span></label>
+                            <input id="destinataire_demande" class="form-control" type="text"
+                                   name="destinataireDemande" th:value="${personnel.service.fonctionChefService}" readonly="true">
+                            <span class="text-danger" th:errors="${demande.destinataireDemande}"></span>
+                        </div>
+
+                        <div class="form-group col-sm-12">
+                            <label class="text-center">Objet <span
+                                    class="text-danger">*</span></label>
+                            <select class="form-control text-center" id="duree_permission" name="dureePermission">
+                                <option value="">-- séctionner durée --</option>
+                                <option th:value="24">Demande d'une autorisation d'absence de 24 H (01 jour)</option>
+                                <option th:value="48">Demande d'une autorisation d'absence de 48 H (02 jours)</option>
+                                <option th:value="72">Demande d'une autorisation d'absence de 72 H (03 jours)</option>
+                                <option th:value="96">Demande d'une autorisation d'absence de 96 H (04 jours)</option>
+                                <option th:value="120">Demande d'une autorisation d'absence de 120 H (05 jours)</option>
+                                <option th:value="144">Demande d'une autorisation d'absence de 144 H (06 jours)</option>
+                            </select>
+                        </div>
+                    </div>
+                    &nbsp
+                    <hr/>
+                    <div class="row col-sm-12 mt-1 ms-1 ml-1">
+                        <div class="form-group col-sm-4">
+                            <label class="">Date début de la permission<span
+                                    class="text-danger">*</span></label>
+                            <input id="dateDebut" class="form-control" type="date" name="dateDebut" th:value="${demande.dateDebut}">
+                            <span class="text-danger" th:errors="${demande.dateDebut}"></span>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="">Destination <span
+                                    class="text-danger">*</span></label>
+                            <input id="destination" class="form-control" type="text" name="destination"
+                                   th:value="${demande.destination}" placeholder="saisir le lieu où se rendre">
+                            <span class="text-danger" th:errors="${demande.destination}"></span>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="">Motif <span
+                                    class="text-danger">*</span></label>
+                            <input id="motif" class="form-control" type="text" name="motif"
+                                   th:value="${demande.motif}" placeholder="saisir motif de la demande">
+                            <span class="text-danger" th:errors="${demande.motif}"></span>
+                        </div>
+                    </div>
+                    &nbsp
+<!--                    <hr/>-->
+
+                    <div class="row col-sm-12 mt-1 ms-1 ml-1" hidden="true">
+                        <label class="text-center">Utilisateur <span
+                                class="text-danger">*</span></label>
+                        <input id="user" class="form-control" type="text" name="user"
+                               th:value="${userId}" placeholder="saisir motif de la demande">
+                    </div>
+                    &nbsp
+                                        <div class="row col-sm-12 mt-1 ms-1 ml-1" hidden="true">
+                                            <div class="form-group col-sm-4">
+                                                <label class="">Lieu <span
+                                                        class="text-danger">*</span></label>
+                                                <input id="lieu" class="form-control" type="text" name="lieu" th:value=" 'Diass, le'">
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="">Objet <span
+                                                        class="text-danger">*</span></label>
+                                                <input id="objet" class="form-control" type="text" name="objet" th:value="'Demande d\'une autorisation d\'absence'">
+                                            </div>
+                                            <div class="form-group col-sm-4">
+                                                <label class="">Statut <span
+                                                        class="text-danger">*</span></label>
+                                                <input id="statut" class="form-control" type="text" name="statut" th:value="0">
+                                            </div>
+                                        </div>
+
+                </div>
+            </div>
+
+            <!-- VALIDATION -->
+            <div class="card-body">
+                <div class="row card">
+                    <div class="row col-sm-12 mt-4 ms-1 ml-1">
+                        <div class="form-group col-sm-6">
+<!--                            <button type="submit"-->
+<!--                                    class="btn btn-outline-warning col-sm-12">-->
+<!--                                <i class="bi bi-cancel ms-2"></i>-->
+<!--                                Annuler-->
+<!--                            </button>-->
+                            <button type="submit" class="btn btn-outline-warning col-sm-12">
+                                <a th:href="@{/personnels/index}" class="text-primary ms-2">
+                                    <i class="fa-solid fa-xmark ms-2"></i> Annuler
+                                </a>
+                            </button>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <button type="submit"
+                                    class="btn btn-outline-success col-sm-12">
+                                <i class="fa-solid fa-floppy-disk ms-2"></i>
+                                Valider la demande
+                            </button>
+                        </div>
+                    </div>
+                    &nbsp;
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
