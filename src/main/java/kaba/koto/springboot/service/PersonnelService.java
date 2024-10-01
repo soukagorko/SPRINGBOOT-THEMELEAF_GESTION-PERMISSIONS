@@ -1,18 +1,11 @@
 package kaba.koto.springboot.service;
 
-import kaba.koto.springboot.auth.entities.User;
 import kaba.koto.springboot.auth.repositories.UserRepository;
-import kaba.koto.springboot.entities.Demande;
 import kaba.koto.springboot.entities.Personnel;
 import kaba.koto.springboot.repositories.DemandeRepository;
-import kaba.koto.springboot.repositories.EmployeeRepository;
 import kaba.koto.springboot.repositories.PersonnelRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
