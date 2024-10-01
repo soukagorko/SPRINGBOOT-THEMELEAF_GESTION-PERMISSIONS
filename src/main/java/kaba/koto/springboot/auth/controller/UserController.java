@@ -49,13 +49,10 @@ public class UserController {
     @GetMapping("/users/create")
     public String ajouter(Model model){
         model.addAttribute("user", new User());
-        //
         List<Service> services = serviceRepository.findAll();//recuperer la liste des patients ds la BD
         model.addAttribute("listServices", services);
-        //
         List<Role> roles = roleRepository.findAll();//recuperer la liste des patients ds la BD
         model.addAttribute("listRoles", roles);
-        //
         return "/users/create";
     }
     //
@@ -66,7 +63,6 @@ public class UserController {
         userRepository.save(user);
         return "redirect:/users";
     }
-
     //
     @GetMapping("/users/edit")
     public String editer(Model model, Long id){// declarer un model et un id

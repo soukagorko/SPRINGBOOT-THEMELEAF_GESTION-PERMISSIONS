@@ -148,51 +148,6 @@ public class StatistiqueController {
         //return "demandes/duPersonnelEnAttente";
     }
 
-    // 21 08 2024
-//    @GetMapping("/statistiques/permissions/total_jour_par_service2")
-//    public String getCumulHeurePermissionParPersonnelDuService2(Model model) {
-//        List<Map<String, Object>> cumulData = permissionService.getCumulativeDurationByPersonnelAndService();
-//        model.addAttribute("cumulData", cumulData);
-//        return "statistiques/cumulHeurePermissionParPersonnelDuService2";
-//    }
-
-    // 21 08 2024: cumul heure de permissions de chaque personne
-//    @GetMapping("/statistiques/total-duree")
-//    public String showTotalDuree(Model model) {
-//        List<DemandeSummary> demandeSummaries = demandeService.getDemandesWithTotalDuree();
-//        model.addAttribute("demandeSummaries", demandeSummaries);
-//        return "statistiques/total-duree";
-//    }
-
-    //
-//    @GetMapping("/statistiques/total-duree2")
-//    public String showTotalDuree2(Model model) {
-//        List<DemandeSummary> demandeSummaries = demandeService.getDemandesWithTotalDureeGroupedByService();
-//
-//        // Regrouper les résultats par nom de service
-//        Map<String, List<DemandeSummary>> demandesGroupedByService = demandeSummaries.stream()
-//                .collect(Collectors.groupingBy(DemandeSummary::getNomService));
-//
-//        model.addAttribute("demandesGroupedByService", demandesGroupedByService);
-//        return "statistiques/total-duree2";
-//    }
-
-    @GetMapping("/statistiques/totale-duree-KO")
-    public String showTotalDureeKO(Model model) {
-        // Appeler le service pour obtenir les données pour l'utilisateur connecté
-        List<DemandePermissionDTO> demandeSummaries = demandeService.getDemandesSummaryForCurrentUser();
-
-        if (!demandeSummaries.isEmpty()) {
-            String nomService = demandeSummaries.get(0).getNomService();
-            String sigleService = demandeSummaries.get(0).getSigleService();
-            model.addAttribute("nomService", nomService);
-            model.addAttribute("sigleService", sigleService);
-        }
-
-        model.addAttribute("demandeSummaries", demandeSummaries);
-        return "statistiques/totale-duree-ko";
-    }
-
     @GetMapping("/statistiques/totale-duree")
     public String showTotalDuree(Model model) {
         // Appeler le service pour obtenir les données pour l'utilisateur connecté

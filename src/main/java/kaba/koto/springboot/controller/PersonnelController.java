@@ -170,17 +170,6 @@ public class PersonnelController {
         return "personnels/du_service";
     }
 
-//    @GetMapping("/personnels/parService")
-//    public String getAllPersonnels(Model model) {
-//        List<Service> services = serviceRepository.findAll();
-//        Map<String, List<Personnel>> personnelByService = personnelService.findAllPersonnel()
-//                .stream()
-//                .collect(Collectors.groupingBy(e -> e.getService().getNomService()));
-//        model.addAttribute("services", services);
-//        model.addAttribute("personnelByService", personnelByService);
-//        return "personnels/parService";
-//    }
-    //
     @GetMapping("/personnel/service/{serviceId}")
     public String getPersonnelByService(@PathVariable Long serviceId, Model model) {
         Service service = serviceRepository.findById(serviceId).orElseThrow(() -> new IllegalArgumentException("Invalid service Id:" + serviceId));
@@ -188,29 +177,5 @@ public class PersonnelController {
         model.addAttribute("personnelList", personnelList);
         return "personnels/personnelList";
     }
-    //
-//    @GetMapping("/demandes/create")
-//    public String demandePermission(Model model, Long id){// declarer un model, un id, le mot clé et le nbre de page
-//        Personnel personnel =personnelRepository.findById(id).orElse(null);// rechercher un patient par son id, on returne null s'il nexiste pas
-//        if(personnel==null) throw new RuntimeException("PERSONNEL INTROUVABLE !");
-//        model.addAttribute("personnel",personnel);
-//        model.addAttribute("demande", new Demande());
-//
-//        String username = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-//        User user = userRepository.findByUsername(username);
-//
-//        Long serviceId = user.getService().getId();
-//        String serviceName = user.getService().getNomService();
-//        long userId = user.getId();
-//        model.addAttribute("serviceName", serviceName);
-//        model.addAttribute("userId", userId);
-//
-//        return "/demandes/create";
-//    }
-    //
-
-
-//
-
 
 }
